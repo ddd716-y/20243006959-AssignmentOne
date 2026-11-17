@@ -3,4 +3,8 @@
     <color name="color_primary">#1B5E20</color>
     <color name="color_on_primary">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="green">#1B5E20</color>
+    <color name="light_green">#66BB6A</color>
+    <color name="ic_launcher_background">#1B5E20</color>
 </resources>
