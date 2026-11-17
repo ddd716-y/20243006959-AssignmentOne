@@ -5,4 +5,13 @@
     <string name="label_events">Events</string>
     <string name="label_clubs">Clubs</string>
     <string name="label_support">Support</string>
+
+    <!-- Short topic names shown in the DetailActivity header, indexed to match
+         the arrays in arrays.xml. -->
+    <string-array name="detail_headers">
+        <item>Facilities</item>
+        <item>Events</item>
+        <item>Clubs</item>
+        <item>Support</item>
+    </string-array>
 </resources>
