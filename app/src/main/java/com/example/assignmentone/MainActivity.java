@@ -1,34 +1,45 @@
 package com.example.assignmentone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    /**
+     * Intent extra key carrying the index of the topic that was clicked.
+     * The index maps directly onto the arrays in arrays.xml.
+     */
+    public static final String EXTRA_TOPIC_INDEX = "com.example.assignmentone.TOPIC_INDEX";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Temporary click feedback while the detail navigation is not yet wired up.
-        addClickListener(R.id.buttonFacilities, "Facilities clicked");
-        addClickListener(R.id.buttonEvents, "Events clicked");
-        addClickListener(R.id.buttonClubs, "Clubs clicked");
-        addClickListener(R.id.buttonSupport, "Support clicked");
+        // Each image button opens the detail screen for its own topic.
+        addTopicButton(R.id.buttonFacilities, 0);
+        addTopicButton(R.id.buttonEvents, 1);
+        addTopicButton(R.id.buttonClubs, 2);
+        addTopicButton(R.id.buttonSupport, 3);
     }
 
     /**
-     * Registers a click listener that shows a short toast, used to verify that
-     * every image button responds to taps.
+     * Registers a click listener that starts DetailActivity with the given
+     * topic index as an extra.
+     *
+     * @param buttonId the image button resource id
+     * @param topicIndex the position of the topic in the arrays.xml arrays
      */
-    private void addClickListener(int buttonId, final String message) {
+    private void addTopicButton(int buttonId, final int topicIndex) {
         findViewById(buttonId).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra(EXTRA_TOPIC_INDEX, topicIndex);
+                startActivity(intent);
             }
         });
     }
